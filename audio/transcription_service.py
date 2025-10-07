@@ -68,8 +68,8 @@ async def process_audio_transcription(file, filename: str, content_type: str) ->
             "data": file_content
         }
 
-        model = genai.GenerativeModel('models/gemini-1.5-flash')
-        prompt = "Transcribe the following audio file accurately and clearly."
+        model = genai.GenerativeModel('models/gemini-2.0-flash')
+        prompt = "Transcribe the following audio file accurately and clearly to english"
         
         # Pass the prompt and the audio part directly to the model.
         response = model.generate_content([prompt, audio_part])
