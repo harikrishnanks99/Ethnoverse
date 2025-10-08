@@ -3,17 +3,14 @@ from dotenv import load_dotenv
 import transcription_service
 import logging
 
-# Load environment variables from .env file at the start
 load_dotenv()
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
-# Create the FastAPI app instance
 app = FastAPI(
     title="Audio Transcription API",
     description="An API to transcribe audio files using Google Gemini and store results on AWS S3.",
@@ -40,14 +37,12 @@ async def create_transcription(file: UploadFile = File(...)):
         )
 
     try:
-        # ======================= KEY CHANGE HERE =======================
         # We now pass the file's content type to the service function.
         transcribed_text = await transcription_service.process_audio_transcription(
             file=file.file,
             filename=file.filename,
             content_type=file.content_type
         )
-        # =============================================================
         
         logger.info(f"Successfully processed and transcribed file '{file.filename}'.")
         return {
@@ -63,6 +58,5 @@ async def create_transcription(file: UploadFile = File(...)):
 
 @app.get("/", tags=["Health Check"])
 async def root():
-    """A simple health check endpoint to verify the API is running."""
     logger.info("Health check endpoint was hit.")
     return {"message": "Audio Transcription API is running."}
