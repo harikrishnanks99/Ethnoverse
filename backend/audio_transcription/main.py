@@ -4,6 +4,7 @@ import transcription_service
 import logging
 from typing import Dict
 from auth import get_current_user # Import the new dependency
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
@@ -17,6 +18,23 @@ app = FastAPI(
     title="Audio Transcription API",
     description="An API to transcribe audio files using Google Gemini and store results on AWS S3.",
     version="1.0.0"
+)
+
+
+#new changes
+origins = [
+    "http://your-s3-bucket-website-url.s3-website-us-east-1.amazonaws.com", # Your S3 frontend URL
+    "http://localhost:3000", # If you run your frontend locally
+    "http://localhost:8080", # Or another local port
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins, # Allows specific origins
+    # allow_origins=["*"], # Or allow all origins
+    allow_credentials=True,
+    allow_methods=["*"], # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"], # Allows all headers
 )
 
 @app.post("/transcribe/", tags=["Transcription"])
