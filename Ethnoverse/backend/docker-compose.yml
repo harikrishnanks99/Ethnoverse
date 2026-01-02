@@ -1,0 +1,92 @@
+services:
+  frontend:
+    build:
+      context: ../frontend-app
+      dockerfile: Dockerfile
+    container_name: ethnoverse_frontend
+    volumes:
+      - ../frontend-app:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  auth_service:
+    build: ./auth_service
+    container_name: auth_service_app
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./auth_service:/app # For live code reload
+      - auth_db_data:/app/data # For persistent database data ONLY
+    env_file:
+      - ./auth_service/.env
+
+  transcription_service:
+    build: ./audio_transcription
+    container_name: transcription_service_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./audio_transcription:/app
+    env_file:
+      - ./audio_transcription/.env
+    depends_on:
+      - auth_service
+
+  ai_agent:
+    build: ./ai_agent
+    container_name: ai_agent_app
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./ai_agent:/app
+      - chroma_data:/data/chroma_db
+    environment:
+      - VECTOR_DB_PATH=/data/chroma_db
+    env_file:
+      - ./ai_agent/.env
+    depends_on:
+      - auth_service
+      - redis
+      - neo4j
+
+  redis:
+    image: redis:alpine
+    container_name: ethnoverse_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  neo4j:
+    image: neo4j:latest
+    container_name: ethnoverse_neo4j
+    ports:
+      - "7474:7474" # HTTP
+      - "7687:7687" # Bolt
+    environment:
+      - NEO4J_AUTH=none # For development only
+    volumes:
+      - neo4j_data:/data
+
+  handwriting_service:
+    build: ./handwriting_service
+    container_name: handwriting_service_app
+    ports:
+      - "8003:8003"
+    volumes:
+      - ./handwriting_service:/app
+    env_file:
+      - ./ai_agent/.env # Sharing env for API keys
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/google-cloud-key.json
+    depends_on:
+      - ai_agent
+
+volumes:
+  auth_db_data:
+  redis_data:
+  neo4j_data:
+  chroma_data:
