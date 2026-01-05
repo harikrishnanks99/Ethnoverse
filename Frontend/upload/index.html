@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Your Heritage</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <span class="logo">ETHNOVERSE</span>
+        </div>
+        <nav class="navbar-center">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="#" class="active">Contribute</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <div class="navbar-right">
+            <span class="material-icons notification-icon">notifications</span>
+            <div class="user-avatar">
+                <img src="https://via.placeholder.com/30" alt="User Avatar">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Upload Your Heritage</h1>
+
+        <!-- Audio Upload Section -->
+        <section class="upload-section">
+            <h2 class="section-title">Audio Files</h2>
+            <p class="section-description">Select an audio file from your computer to upload, or record directly. Supported formats: MP3, WAV, AAC.</p>
+
+            <div class="drop-zone" id="audioDropZone">
+                <p>Drag and drop audio file here</p>
+                <p>Or click to browse</p>
+                <input type="file" id="audioFileInput" accept=".mp3,.wav,.aac" hidden>
+                <button class="upload-button" id="browseAudioButton">Browse Files</button>
+            </div>
+
+            <!-- Audio Recorder -->
+            <div class="audio-recorder">
+                <p class="recorder-label">Or record new audio:</p>
+                <button class="record-button" id="recordAudioButton">
+                    <span class="material-icons">mic</span>
+                    Start Recording
+                </button>
+                <div class="recording-status" id="recordingStatus">
+                    <span class="material-icons record-icon">fiber_manual_record</span>
+                    Recording... <span id="recordingTimer">00:00</span>
+                </div>
+                <audio id="audioPlayback" controls class="audio-playback" style="display:none;"></audio>
+                <button class="upload-button" id="uploadRecordedAudioButton" style="display:none; margin-top: 15px;">Upload Recorded Audio</button>
+            </div>
+
+
+            <div class="upload-progress-container">
+                <p>Uploading</p>
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar" id="audioProgressBar" style="width: 0%;"></div>
+                </div>
+                <span id="audioProgressText">0%</span>
+            </div>
+        </section>
+
+        <!-- Handwritten Notes Upload Section -->
+        <section class="upload-section">
+            <h2 class="section-title">Handwritten Notes</h2>
+            <p class="section-description">Select handwritten notes from your computer to upload. Supported formats: JPG, PNG, PDF.</p>
+            <div class="drop-zone" id="notesDropZone">
+                <p>Drag and drop handwritten notes here</p>
+                <p>Or click to browse</p>
+                <input type="file" id="notesFileInput" accept=".jpg,.jpeg,.png,.pdf" hidden multiple>
+                <button class="upload-button" id="browseNotesButton">Browse Files</button>
+            </div>
+            <div class="upload-progress-container">
+                <p>Notes Upload Progress</p>
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar" id="notesProgressBar" style="width: 0%;"></div>
+                </div>
+                <span id="notesProgressText">0%</span>
+            </div>
+        </section>
+
+        <p class="terms-agreement">By uploading, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

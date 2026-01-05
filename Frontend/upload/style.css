@@ -1,0 +1,318 @@
+:root {
+    --primary-text: #1A1A1A;
+    --secondary-text: #666666;
+    --light-text: #999999;
+    --white: #FFFFFF;
+    --background-grey: #F5F5F5;
+    --border-color: #E0E0E0;
+    --accent-blue: #4F46E5; /* From the navbar/progress bar */
+    --accent-blue-hover: #3E38B3;
+    --dropzone-border: #D1D5DB; /* Lighter grey for dashed border */
+    --record-red: #DC2626; /* Red for recording indicator */
+    --record-red-hover: #B91C1C;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: var(--background-grey);
+    color: var(--primary-text);
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 30px; /* Space between navbar and content */
+}
+
+.navbar-left .logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-text);
+    letter-spacing: 0.5px;
+}
+
+.navbar-center ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar-center a {
+    text-decoration: none;
+    color: var(--secondary-text);
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.2s ease;
+    position: relative;
+    padding-bottom: 5px; /* For active indicator */
+}
+
+.navbar-center a:hover {
+    color: var(--primary-text);
+}
+
+.navbar-center a.active {
+    color: var(--primary-text);
+    font-weight: 600;
+}
+
+.navbar-center a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-blue);
+    border-radius: 1px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-right .notification-icon {
+    font-size: 24px;
+    color: var(--secondary-text);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.navbar-right .notification-icon:hover {
+    color: var(--primary-text);
+}
+
+.navbar-right .user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--light-grey-bg); /* Placeholder background */
+}
+
+.navbar-right .user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Main Content Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary-text);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* Upload Section */
+.upload-section {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
+
+.upload-section .section-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-text);
+    margin: 0 0 10px 0;
+}
+
+.upload-section .section-description {
+    font-size: 15px;
+    color: var(--secondary-text);
+    margin: 0 0 25px 0;
+}
+
+.drop-zone {
+    border: 2px dashed var(--dropzone-border);
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    margin-bottom: 30px;
+}
+
+.drop-zone:hover,
+.drop-zone.drag-over {
+    background-color: var(--background-grey);
+    border-color: var(--accent-blue);
+}
+
+.drop-zone p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: var(--secondary-text);
+}
+
+.drop-zone p:first-of-type {
+    font-weight: 500;
+    color: var(--primary-text);
+    margin-bottom: 10px;
+}
+
+.upload-button {
+    background-color: var(--accent-blue);
+    color: var(--white);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 20px;
+}
+
+.upload-button:hover {
+    background-color: var(--accent-blue-hover);
+}
+
+/* Audio Recorder Specific Styles */
+.audio-recorder {
+    margin-top: 30px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 25px;
+    text-align: center;
+}
+
+.audio-recorder .recorder-label {
+    font-size: 15px;
+    color: var(--secondary-text);
+    margin-bottom: 15px;
+}
+
+.record-button {
+    background-color: var(--record-red);
+    color: var(--white);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.record-button:hover {
+    background-color: var(--record-red-hover);
+}
+
+.record-button .material-icons {
+    font-size: 20px;
+}
+
+.record-button.recording {
+    background-color: #666; /* Grey when stopping */
+}
+
+.record-button.recording:hover {
+    background-color: #555;
+}
+
+
+.recording-status {
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-text);
+    gap: 10px;
+}
+
+.recording-status .record-icon {
+    color: var(--record-red);
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.audio-playback {
+    width: 100%;
+    max-width: 400px; /* Limit width of audio player */
+    margin-top: 20px;
+    display: block; /* Ensure it's block when shown */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Progress Bar Styling */
+.upload-progress-container {
+    margin-top: 20px;
+}
+
+.upload-progress-container p {
+    font-size: 14px;
+    color: var(--secondary-text);
+    margin: 0 0 8px 0;
+}
+
+.progress-bar-wrapper {
+    width: 100%;
+    background-color: var(--border-color);
+    border-radius: 5px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--accent-blue);
+    border-radius: 5px;
+    width: 0%; /* Initial width */
+    transition: width 0.3s ease-in-out;
+}
+
+.upload-progress-container span {
+    font-size: 13px;
+    color: var(--light-text);
+}
+
+.terms-agreement {
+    text-align: center;
+    font-size: 14px;
+    color: var(--secondary-text);
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.terms-agreement a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms-agreement a:hover {
+    text-decoration: underline;
+}

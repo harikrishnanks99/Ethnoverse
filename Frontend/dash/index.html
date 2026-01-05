@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://via.placeholder.com/40" alt="User Avatar"> <!-- Placeholder image -->
+            </div>
+            <div class="user-info">
+                <h3>Harikrishnan K S</h3>
+                <p>Community Historian</p>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="index.html" class="active"> <!-- Added href for dashboard to itself -->
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="../upload/index.html"> <!-- CHANGED: Link points to your new upload page -->
+                        <span class="material-icons">cloud_upload</span>
+                        Upload
+                    </a>
+                </li>
+                <!-- Transcribe option removed as requested -->
+                <li>
+                    <a href="#">
+                        <span class="material-icons">collections_bookmark</span>
+                        Knowledge Map
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="material-icons">groups</span>
+                        Community
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <header class="dashboard-header">
+            <h1>Dashboard</h1>
+            <p>Welcome back, Sarah! Here's an overview of your contributions and community activity.</p>
+        </header>
+
+        <section class="stats-cards">
+            <div class="stat-card">
+                <p class="stat-label">Community Members</p>
+                <p class="stat-value">1,250</p>
+            </div>
+            <div class="stat-card">
+                <p class="stat-label">Total Contributions</p>
+                <p class="stat-value">5,678</p>
+            </div>
+            <div class="stat-card">
+                <p class="stat-label">Active Topics</p>
+                <p class="stat-value">34</p>
+            </div>
+        </section>
+
+        <section class="content-status">
+            <h2>Content Status</h2>
+            <div class="status-item">
+                <p class="status-label">Transcription & Verification</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 75%;"></div> <!-- 3 out of 4 items = 75% -->
+                </div>
+                <p class="progress-text">3 out of 4 items transcribed</p>
+            </div>
+            <div class="status-item">
+                <p class="status-label">AI Agent Review</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 50%;"></div> <!-- 2 out of 4 items = 50% -->
+                </div>
+                <p class="progress-text">2 out of 4 items reviewed</p>
+            </div>
+        </section>
+
+        <section class="ai-agent-review">
+            <h2>AI Agent Review</h2>
+            <div class="review-item approved">
+                <div class="review-details">
+                    <h3>Content Approved</h3>
+                    <p>Your submission on 'Traditional Weaving Techniques' has been approved and is now part of the Knowledge Map.</p>
+                </div>
+                <div class="review-image">
+                    <img src="https://via.placeholder.com/150x100?text=Approved" alt="Approved content image">
+                </div>
+            </div>
+            <div class="review-item rejected">
+                <div class="review-details">
+                    <h3>Content Rejected</h3>
+                    <p>Your submission on 'Local Legends of Willow Creek' requires further verification. Please provide additional sources.</p>
+                </div>
+                <div class="review-image">
+                    <img src="https://via.placeholder.com/150x100?text=Rejected" alt="Rejected content image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Map section removed as requested -->
+
+        <section class="smart-search">
+            <h2>Smart Search</h2>
+            <div class="search-input-container">
+                <span class="material-icons search-icon">search</span>
+                <input type="text" placeholder="Search">
+            </div>
+        </section>
+
+        <footer class="dashboard-footer">
+            <p>&copy; 2024 Community Heritage Preservation Platform. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

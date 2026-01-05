@@ -1,0 +1,307 @@
+/* Color Palette Variables (Approximate based on image) */
+:root {
+    --color-primary: #ff9933; /* Orange for primary buttons */
+    --color-text-dark: #333;
+    --color-text-light: #fff;
+    --color-background: #f8f8f8; /* Off-white background */
+    --color-navbar-bg: #fff;
+    --color-footer-text: #666;
+    --color-hero-bg: #e0d1c4; /* Light tan/peach background for the illustration */
+    --color-button-secondary-bg: #fff;
+    --color-button-secondary-border: #666;
+    --color-overlay-bg: #FFFFFF; /* White background for the text overlay box */
+    --color-shadow: rgba(0, 0, 0, 0.1); /* Subtle shadow for the box */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif; /* Added Inter, assuming you might use it */
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+}
+
+/* ---------------------------------- */
+/* Navigation Bar */
+/* ---------------------------------- */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--color-navbar-bg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Added subtle shadow for navbar */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: var(--color-text-dark); /* Ensure logo color is dark */
+}
+
+/* Removed logo img placeholder styles as it's not in HTML */
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-text-dark);
+    margin-left: 30px;
+    font-size: 1em;
+    font-weight: 500; /* Added font-weight for nav links */
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary); /* Highlight on hover */
+}
+
+.nav-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* ---------------------------------- */
+/* Buttons - General Styling */
+/* ---------------------------------- */
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    display: inline-flex; /* To ensure padding works for a elements */
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-primary); /* Add border for consistency */
+}
+
+.btn-primary:hover {
+    background-color: #e68a00; /* Slightly darker orange */
+    border-color: #e68a00;
+}
+
+.btn-secondary {
+    background-color: var(--color-button-secondary-bg);
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-button-secondary-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--background-grey); /* Light grey on hover */
+    border-color: var(--color-text-dark);
+}
+
+/* Removed btn-secondary-dark as it's not used in current HTML */
+/* .btn-secondary-dark {
+    background-color: transparent;
+    color: var(--color-text-light);
+    border: 1px solid var(--color-text-light);
+}
+
+.btn-secondary-dark:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+} */
+
+/* ---------------------------------- */
+/* Hero Section */
+/* ---------------------------------- */
+
+.hero-section {
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-content-container {
+    width: 90%; /* Adjusted for a bit more width */
+    max-width: 1200px; /* Increased max width */
+}
+
+.hero-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--color-hero-bg); /* Background for the entire hero card */
+}
+
+.illustration-placeholder {
+    background-image: url('imggg.jpg'); /* Ensure 'imggg.jpg' is in the same folder as style.css */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding-top: 55%; /* Aspect ratio for the card height */
+    position: relative;
+}
+
+
+
+.hero-text-overlay {
+    background-color: var(--color-overlay-bg);
+    padding: 25px 40px; /* ↓ Reduced top/bottom padding, kept side padding */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px var(--color-shadow);
+
+    position: absolute;
+    top: 70%;
+    right: 3%; /* Slightly closer to the edge (was 5%) */
+    transform: translateY(-50%);
+    text-align: left;
+    color: var(--color-text-dark);
+    z-index: 2;
+
+    max-width: 550px; /* ↑ Wider than before (was 450px) */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.hero-text-overlay h1 {
+    font-size: 2.8em; /* Slightly smaller for better fit in the box */
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-text-overlay p {
+    font-size: 1.05em; /* Adjusted font size */
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: var(--secondary-text, #666); /* Use a variable if defined, fallback to #666 */
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start; /* Align buttons to the left within the box */
+}
+
+/* ---------------------------------- */
+/* Footer */
+/* ---------------------------------- */
+
+footer {
+    text-align: center;
+    padding: 40px 0 20px 0;
+    font-size: 0.9em;
+    color: var(--color-footer-text);
+    background-color: var(--color-navbar-bg); /* Match navbar background */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.02); /* Subtle shadow for footer */
+    margin-top: 50px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--color-footer-text);
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+.copyright {
+    margin-top: 10px;
+}
+
+/* ---------------------------------- */
+/* Responsive Adjustments (Basic) */
+/* ---------------------------------- */
+
+@media (max-width: 1024px) {
+    .hero-text-overlay {
+        right: 2%; /* Adjust right position for smaller screens */
+        max-width: 400px;
+        padding: 30px;
+    }
+    .hero-text-overlay h1 {
+        font-size: 2.4em;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links, .nav-actions {
+        /* Simple hiding for mobile. A real site would use a hamburger menu for nav-links */
+        display: none;
+    }
+
+    .hero-content-container {
+        width: 95%;
+    }
+
+    .hero-text-overlay {
+        position: static; /* Remove absolute positioning on small screens */
+        transform: none; /* Reset transform */
+        margin: 30px auto; /* Center the box below the image */
+        max-width: 90%; /* Allow it to be wider */
+        text-align: center; /* Center text on small screens */
+        padding: 30px 20px;
+    }
+
+    .hero-text-overlay h1 {
+        font-size: 2em;
+    }
+
+    .hero-text-overlay p {
+        font-size: 1em;
+    }
+
+    .hero-actions {
+        justify-content: center; /* Center buttons on small screens */
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%; /* Make buttons full width */
+        max-width: 300px; /* Limit max width for stacked buttons */
+        margin: 0 auto; /* Center individual buttons */
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    .logo {
+        font-size: 1.1em;
+    }
+    .hero-text-overlay {
+        padding: 25px 15px;
+    }
+    .hero-text-overlay h1 {
+        font-size: 1.8em;
+    }
+}
