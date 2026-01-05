@@ -1,0 +1,55 @@
+{
+  "document_id": "13937c8e-a5bb-423d-8591-1067a8c56b5d",
+  "timestamp": "2025-10-09T13:27:42.100804",
+  "metadata": {
+    "original_filename": "hw_image.jpg",
+    "user_id": null,
+    "client_ip": "127.0.0.1",
+    "processing_method": "Google Cloud Vision API",
+    "confidence_score": 0.9,
+    "methods_tried": [
+      "Google Cloud Vision API"
+    ]
+  },
+  "content": {
+    "raw_text": "The lion laughed at the mouse and\nlet him go. A few days later, the same\nlion was\ncaught in a hunter's net. He\ntried his almost to get out of the net but\nfailed. He roared loudly in rage. The m\nheard the roar of the lion and hastene",
+    "preprocessed_text": "The lion laughed at the mouse and\nlet him go. A few days later, the same\nlion was\ncaught in a hunter's net. He\ntried his almost to get out of the net but\nfailed. He roared loudly in rage. The m\nheard the roar of the lion and hastene",
+    "word_count": 50,
+    "character_count": 232,
+    "line_count": 7,
+    "lines": [
+      "The lion laughed at the mouse and",
+      "let him go. A few days later, the same",
+      "lion was",
+      "caught in a hunter's net. He",
+      "tried his almost to get out of the net but",
+      "failed. He roared loudly in rage. The m",
+      "heard the roar of the lion and hastene"
+    ]
+  },
+  "ocr_details": {
+    "original_ocr_text": "The lion laughed at the mouse and\nlet him go. A few days later, the same\nlion was\ncaught in a hunter's net. He\ntried his almost to get out of the net but\nfailed. He roared loudly in rage. The m\nheard the roar of the lion and hastene",
+    "user_corrections": false,
+    "line_data": [
+      {
+        "line": "The lion laughed at the mouse and\nlet him go. A few days later, the same\nlion was\ncaught in a hunter's net. He\ntried his almost to get out of the net but\nfailed. He roared loudly in rage. The m\nheard the roar of the lion and hastene",
+        "confidence": 0.9
+      }
+    ]
+  },
+  "nlp_ready": {
+    "cleaned_text": "The lion laughed at the mouse and let him go. A few days later, the same lion was caught in a hunter's net. He tried his almost to get out of the net but failed. He roared loudly in rage. The m heard the roar of the lion and hastene",
+    "sentences": [
+      "The lion laughed at the mouse and let him go",
+      "A few days later, the same lion was caught in a hunter's net",
+      "He tried his almost to get out of the net but failed",
+      "He roared loudly in rage",
+      "The m heard the roar of the lion and hastene"
+    ],
+    "paragraphs": [
+      "The lion laughed at the mouse and\nlet him go. A few days later, the same\nlion was\ncaught in a hunter's net. He\ntried his almost to get out of the net but\nfailed. He roared loudly in rage. The m\nheard the roar of the lion and hastene"
+    ]
+  },
+  "status": "approved",
+  "ready_for_processing": true
+}

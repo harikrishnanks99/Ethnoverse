@@ -1,0 +1,48 @@
+{
+  "document_id": "9f75b9e7-1601-40b9-a7c9-759a1b20b3ae",
+  "timestamp": "2025-10-14T15:04:15.755134",
+  "metadata": {
+    "original_filename": "image1.jpg",
+    "user_id": null,
+    "client_ip": "127.0.0.1",
+    "processing_method": "Google Cloud Vision API",
+    "confidence_score": 0.9,
+    "methods_tried": [
+      "Google Cloud Vision API"
+    ]
+  },
+  "content": {
+    "raw_text": "We Start With Good\nBecause all businesses should\nbe\ndoing something good.",
+    "preprocessed_text": "We Start With Good\nBecause all businesses should\nbe\ndoing something good.",
+    "word_count": 12,
+    "character_count": 73,
+    "line_count": 4,
+    "lines": [
+      "We Start With Good",
+      "Because all businesses should",
+      "be",
+      "doing something good."
+    ]
+  },
+  "ocr_details": {
+    "original_ocr_text": "We Start With Good\nBecause all businesses should\nbe\ndoing something good.",
+    "user_corrections": false,
+    "line_data": [
+      {
+        "line": "We Start With Good\nBecause all businesses should\nbe\ndoing something good.",
+        "confidence": 0.9
+      }
+    ]
+  },
+  "nlp_ready": {
+    "cleaned_text": "We Start With Good Because all businesses should be doing something good.",
+    "sentences": [
+      "We Start With Good Because all businesses should be doing something good"
+    ],
+    "paragraphs": [
+      "We Start With Good\nBecause all businesses should\nbe\ndoing something good."
+    ]
+  },
+  "status": "approved",
+  "ready_for_processing": true
+}
