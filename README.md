@@ -1,105 +1,107 @@
-# Multi-Service Audio Transcription API
+# Ethnoverse
 
-This project is a secure, scalable, and robust backend system for audio transcription, built using a modern microservice architecture. It features a dedicated authentication service for user management and a separate transcription service that leverages Google's Gemini API for state-of-the-art speech-to-text conversion. All user data is securely stored in a private AWS S3 bucket.
+Ethnoverse is a digital platform designed to preserve implicit cultural knowledge by enabling communities to record, protect, and share valuable generational wisdom. It serves as a bridge between traditional oral histories and modern digital archiving, ensuring that intangible heritage—such as folklore, ecological understanding, and traditional practices—remains accessible for future generations.
 
-## Table of Contents
+## Vision
 
-- [Features](#features)
-- [Architecture](#architecture)
-- [Technology Stack](#technology-stack)
-- [Project Setup and Installation](#project-setup-and-installation)
-  - [Prerequisites](#prerequisites)
-  - [Environment Configuration](#environment-configuration)
-  - [Running the Application](#running-the-application)
-- [API Usage and Testing](#api-usage-and-testing)
-  - [Step 1: Register a New User](#step-1-register-a-new-user)
-  - [Step 2: Log In to Get an Access Token](#step-2-log-in-to-get-an-access-token)
-  - [Step 3: Transcribe an Audio File](#step-3-transcribe-an-audio-file)
-- [Challenges and Key Learnings](#challenges-and-key-learnings)
+A vast repository of local knowledge resides with community elders and members, forming the foundation of cultural identity. However, this intangible heritage is often undocumented and at risk of disappearing. Ethnoverse addresses this by providing a cloud-native, AI-integrated platform where fragmented oral and written materials are unified into a structured, searchable archive.
 
-## Features
+## Key Features
 
-- **Microservice Architecture:** Clean separation of concerns with a dedicated Authentication Service and Transcription Service.
-- **Secure User Authentication:** JWT (JSON Web Token) based authentication for stateless and secure API access.
-- **Password Hashing:** User passwords are securely hashed using bcrypt before being stored.
-- **AI-Powered Transcription:** Integrates with Google's Gemini API for highly accurate and fast audio-to-text conversion.
-- **Secure File Storage:** All uploaded audio files and their transcriptions are stored in a private, user-specific folder in AWS S3, ensuring data isolation and security.
-- **Containerized Application:** Fully containerized using Docker and orchestrated with Docker Compose for easy setup and consistent environments.
-- **Interactive API Documentation:** Each service includes auto-generated, interactive API documentation via FastAPI and Swagger UI.
+*   **Multimodal Data Ingestion**:
+    *   **Audio Transcription**: Automated conversion of spoken English audio into searchable text.
+    *   **Handwriting Recognition**: Digitization of handwritten documents (journals, manuscripts) into machine-readable text.
+*   **AI Community Administrator**:
+    *   An autonomous AI agent oversees platform governance, ensuring uploaded content aligns with community rules and interests.
+    *   Solves the "successor problem" by maintaining the community for the long term, preventing knowledge loss due to administrative dormant periods.
+    *   Verifies content quality and adherence to guidelines before publication.
+*   **Knowledge Graph & RAG**:
+    *   **Entity Extraction**: LLMS extract key concepts, individuals, and locations.
+    *   **Knowledge Graph**: Organizes data into a graph-based structure to highlight relationships and context.
+    *   **Retrieval-Aghented Generation (RAG)**: Enhance search capabilities, allowing users to query the archive naturally and retrieve accurate context-aware information.
+*   **Persistent Archival**: Cloud-native architecture designed for long-term data preservation.
 
 ## Architecture
 
-The application is composed of two primary microservices that run in separate Docker containers:
+The project follows a **Microservices Architecture** orchestrating various specialized services:
 
-1.  **Authentication Service (`auth_service`)**:
-    - Runs on port `8001`.
-    - Manages user registration (`/register`) and login (`/login`).
-    - Handles password hashing and storage in a persistent SQLite database.
-    - Generates and signs JWT access tokens upon successful login.
+*   **Frontend**: Built with **HTML, CSS, and Vanilla JavaScript** for a lightweight and responsive user interface.
+*   **Backend**: Powered by **Python and FastAPI**. Each core function is isolated in its own service:
+    *   `auth_service`: User authentication and management.
+    *   `audio_transcription`: Handles audio processing and text conversion.
+    *   `Handwriting_recognition`: OCR and handwriting digitization.
+*   **Infrastructure**:
+    *   **Docker & Docker Compose**: Containerization of all services for consistent deployment and easy scalability.
+    *   **Nginx**: Acts as a reverse proxy / API gateway to route requests to the appropriate backend services.
 
-2.  **Transcription Service (`audio_transcription`)**:
-    - Runs on port `8000`.
-    - Exposes a protected endpoint (`/transcribe`) for audio processing.
-    - Validates JWTs received in the `Authorization` header on every request.
-    - Interacts with the Gemini API to perform transcription.
-    - Uploads the original audio and the resulting text transcript to a user-specific folder in an AWS S3 bucket.
+## Repository Structure
 
-## Technology Stack
+```
+Ethnoverse/
+├── Frontend/                 # Web interface (HTML/CSS/JS)
+│   ├── home/                 # Landing page
+│   ├── dash/                 # User dashboard
+│   ├── upload/               # Content upload interface
+│   └── ...
+├── backend/                  # Backend Microservices
+│   ├── auth_service/         # Authentication Logic (FastAPI)
+│   ├── audio_transcription/  # Speech-to-Text Service (FastAPI)
+│   ├── Handwriting_recognition/ # OCR Service (FastAPI)
+│   └── nginx/                # Proxy Configuration
+└── docker-compose.yml        # Orchestration for all services
+```
 
-- **Backend Framework:** FastAPI
-- **Authentication:** PyJWT for token generation/validation, Passlib with bcrypt for password hashing.
-- **Database:** SQLite with SQLAlchemy ORM.
-- **Cloud Services:**
-  - **Google Gemini API** for AI-powered transcription.
-  - **AWS S3** for secure file storage.
-- **Containerization:** Docker & Docker Compose
-- **API Testing:** Postman or interactive Swagger UI.
+## Work Completed So Far
 
-## Project Setup and Installation
+The following components and features have been implemented and are currently functional:
+
+### Backend Services
+*   **Authentication Service (`auth_service`)**:
+    *   User registration and login functionality.
+    *   JWT-based secure authentication.
+    *   Database integration for storing user credentials.
+*   **Audio Transcription Service (`audio_transcription`)**:
+    *   Service to handle audio file uploads.
+    *   Integration with transcription logic to convert speech to text.
+*   **Handwriting Recognition Service (`Handwriting_recognition`)**:
+    *   OCR capabilities to process image uploads.
+    *   Conversion of handwritten images into digital text.
+*   **Infrastructure**:
+    *   **Docker Orchestration**: `docker-compose.yml` is set up to run all services (Auth, Audio, Handwriting, Nginx) simultaneously.
+    *   **API Gateway**: Nginx is configured to route traffic to the respective backend services.
+
+### Frontend
+*   **User Interface**:
+    *   **Landing Page**: A welcoming home page introducing the project.
+    *   **Dashboard**: User area for managing content.
+    *   **Upload Interface**: Functional UI for uploading audio and image files for processing.
+
+## Getting Started
 
 ### Prerequisites
 
-- [Docker](https://www.docker.com/products/docker-desktop/) installed and running.
-- An AWS account with an S3 bucket created. You will need your `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
-- A Google Cloud account with the Gemini API enabled. You will need your `GEMINI_API_KEY`.
+*   Docker and Docker Compose installed on your machine.
 
-### Environment Configuration
+### running the Application
 
-Before running the application, you must configure the environment variables.
-
-1.  **Navigate to `auth_service/`** and create a file named `.env`. Add the following content, replacing the placeholder values:
-
-    ```ini
-    # file: auth_service/.env
-
-    DATABASE_URL="sqlite:///./data/auth.db"
-
-    # Generate a strong, random secret key with: openssl rand -hex 32
-    JWT_SECRET_KEY="your-super-secret-and-long-random-string-for-jwt"
-    ALGORITHM="HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES=30
+1.  **Clone the repository**:
+    ```bash
+    git clone <repository-url>
+    cd Ethnoverse-readme/Ethnoverse
     ```
 
-2.  **Navigate to `audio_transcription/`** and create a file named `.env`. Add the following content, replacing the placeholder values:
-
-    ```ini
-    # file: audio_transcription/.env
-
-    # Gemini and AWS Credentials
-    GEMINI_API_KEY="your-google-gemini-api-key"
-    S3_BUCKET_NAME="your-s3-bucket-name"
-    AWS_ACCESS_KEY_ID="your-aws-access-key"
-    AWS_SECRET_ACCESS_KEY="your-aws-secret-key"
-    AWS_REGION="us-east-1"
-
-    # JWT Settings (must be identical to the auth_service)
-    JWT_SECRET_KEY="your-super-secret-and-long-random-string-for-jwt"
-    ALGORITHM="HS256"
+2.  **Build and Start Services**:
+    Use Docker Compose to spin up the entire stack.
+    ```bash
+    docker-compose up --build
     ```
 
-### Running the Application
+3.  **Access the Application**:
+    *   Frontend: Open your browser and navigate to `http://localhost:80` (or the configured port).
+    *   API Documentation: Individual services can be accessed at their respective ports (e.g., `http://localhost:8000/docs` for auth, etc., check `docker-compose.yml` for specific port mappings).
 
-From the root `backend/` directory, run the following command to build and start the services:
+## Future Roadmap
 
-```bash
-docker-compose up --build
+*   Language support expansion for non-English audio.
+*   Advanced graph visualization tools for researchers.
+*   Integration with decentralized storage solutions for added permanence.
