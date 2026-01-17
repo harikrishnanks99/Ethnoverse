@@ -4,7 +4,7 @@ Ethnoverse is a digital platform designed to preserve implicit cultural knowledg
 
 ## Vision
 
-A vast repository of local knowledge resides with community elders and members, forming the foundation of cultural identity. However, this intangible heritage is often undocumented and at risk of disappearing. Ethnoverse addresses this by providing a cloud-native, AI-integrated platform where fragmented oral and written materials are unified into a structured, searchable archive.
+A vast repository of local knowledge resides with community elders and members, forming the foundation of cultural identity. However, this intangible heritage is often undocumented and at risk of disappearing. Ethnoverse addresses this by providing a cloud-based, AI-integrated platform where fragmented oral and written materials are unified into a structured, searchable archive.
 
 ## Key Features
 
