@@ -1,0 +1,17 @@
+fastapi==0.109.2
+uvicorn==0.27.1
+langchain==0.1.9
+langchain-community==0.0.24
+langchain-google-genai
+langchain-openai==0.0.8
+pydantic>=2.8.2
+python-dotenv==1.0.1
+requests==2.31.0
+redis==5.0.1
+langgraph
+langchain-chroma
+chromadb
+neo4j
+posthog<3.5
+fastembed
+
